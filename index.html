@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshFold Laundry Tracking System | Track Your Laundry</title>
+    <meta name="description" content="Track your laundry from pickup to delivery using your registration number, request a pickup, and contact the FreshFold helpdesk.">
+    <link rel="stylesheet" href="decor.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Skip link for keyboard users -->
+    <a class="skip" href="#main-content">Skip to main content</a>
+
+    <!-- Page header and main menu -->
+    <header>
+      <div class="top">
+        <p class="brand">FreshFold Laundry</p>
+        <nav aria-label="Main menu">
+          <ul>
+            <li><a href="#track" aria-current="page">Track Order</a></li>
+            <li><a href="#pickup">Request Pickup</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Laundry Tracking System</h1>
+        <p>Know exactly where your clothes are: <mark>from pickup to doorstep delivery</mark>.</p>
+      </section>
+
+      <!-- Tracking -->
+      <section id="track" aria-labelledby="track-title">
+        <h2 id="track-title">Track your laundry</h2>
+        <p>Enter your university <strong>Registration Number</strong> (example: <code>12345678</code>) and the mobile number used while booking.</p>
+        <form method="get" action="#track-result">
+          <p>
+            <label for="regno">Registration number *</label><br>
+            <input type="text" id="regno" name="registrationNumber" placeholder="12345678" pattern="[0-9]{8}" maxlength="8" title="Enter your 8-digit registration number, for example 12345678" required autofocus aria-describedby="reg-help">
+            <br><small id="reg-help">8-digit registration number</small>
+          </p>
+          <p>
+            <label for="mob">Mobile number *</label><br>
+            <input type="tel" id="mob" name="mobile" placeholder="9876543210" pattern="[0-9]{10}" maxlength="10" title="Enter a 10-digit mobile number" required>
+          </p>
+          <p><small>Fields marked with an asterisk (*) are required.</small></p>
+          <button type="submit">Track order</button>
+          <button type="reset">Clear</button>
+        </form>
+
+        <h3 id="track-result">Sample tracking result</h3>
+        <article class="card">
+          <header>
+            <h4>Registration No. 12345678</h4>
+            <p>Placed on <time datetime="2026-11-10">10 November 2026</time> | Status: <span class="badge">Washing</span></p>
+          </header>
+          <div class="row">
+            <div class="col">
+              <h4>Order progress</h4>
+              <ol class="stages">
+                <li class="done">Order received</li>
+                <li class="done">Picked up from hostel</li>
+                <li><mark><strong>Washing in progress</strong></mark></li>
+                <li>Drying and ironing</li>
+                <li>Ready for delivery</li>
+                <li>Delivered</li>
+              </ol>
+            </div>
+            <div class="col">
+              <h4>Progress at a glance</h4>
+              <svg width="300" height="90" viewBox="0 0 300 90">
+                <line x1="30" y1="40" x2="270" y2="40" stroke="#b8d4f0" stroke-width="6" />
+                <line x1="30" y1="40" x2="110" y2="40" stroke="#2e7d32" stroke-width="6" />
+                <circle cx="30" cy="40" r="14" fill="#2e7d32" />
+                <circle cx="110" cy="40" r="14" fill="#2e7d32" />
+                <circle cx="190" cy="40" r="14" fill="#b8d4f0" stroke="#0b5cad" stroke-width="3" />
+                <circle cx="270" cy="40" r="14" fill="#b8d4f0" />
+                <text x="30" y="80" font-size="12" text-anchor="middle" fill="#1f2937">Received</text>
+                <text x="110" y="80" font-size="12" text-anchor="middle" fill="#1f2937">Picked</text>
+                <text x="190" y="80" font-size="12" text-anchor="middle" fill="#1f2937">Washing</text>
+                <text x="270" y="80" font-size="12" text-anchor="middle" fill="#1f2937">Delivered</text>
+              </svg>
+              <dl>
+                <dt>Items</dt>
+                <dd>8 pieces (4 shirts, 2 jeans, 2 others)</dd>
+                <dt>Expected delivery</dt>
+                <dd><time datetime="2026-11-13">13 November 2026</time>, evening slot</dd>
+              </dl>
+            </div>
+          </div>
+        </article>
+
+        <h3>Recent orders</h3>
+        <div class="scroll">
+          <table>
+            <caption>Sample order history for registration no. 12345678</caption>
+            <thead>
+              <tr><th scope="col">Date</th><th scope="col">Items</th><th scope="col">Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>10 Nov</td><td>8</td><td>Washing</td></tr>
+              <tr><td>05 Nov</td><td>8</td><td>Delivered</td></tr>
+              <tr><td>29 Oct</td><td>6</td><td>Delivered</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Pickup request form -->
+      <section id="pickup" aria-labelledby="pickup-title">
+        <h2 id="pickup-title">Request a pickup</h2>
+        <p>Fields marked with an asterisk (*) are required.</p>
+        <form method="post">
+          <fieldset>
+            <legend>Your details</legend>
+            <label for="sname">Full name *</label><br>
+            <input type="text" id="sname" name="studentName" minlength="3" maxlength="40" required>
+            <br>
+            <label for="mail">E-mail *</label><br>
+            <input type="email" id="mail" name="email" placeholder="name@example.com" required>
+            <br>
+            <label for="phone">Mobile number *</label><br>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10" title="10-digit number" required>
+            <br>
+            <label for="hostel">Hostel / Block *</label><br>
+            <input type="text" id="hostel" name="hostel" list="blocks" required>
+            <datalist id="blocks">
+              <option value="Boys Hostel 1">
+              <option value="Boys Hostel 2">
+              <option value="Girls Hostel 1">
+              <option value="Block 34 (Day scholar)">
+            </datalist>
+            <br>
+            <label for="room">Room number</label><br>
+            <input type="text" id="room" name="room">
+          </fieldset>
+
+          <input type="checkbox" id="agree" name="agree" value="yes" required>
+          <label for="agree">I have counted my items and agree to the laundry terms *</label>
+          <br>
+          <button type="submit">Request pickup</button>
+          <button type="reset">Clear form</button>
+        </form>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact us</h2>
+        <div class="row">
+          <div class="col">
+            <address>
+              <strong>FreshFold Laundry Helpdesk</strong><br>
+              Ground Floor, Block 34 Annexe<br>
+              University Campus<br>
+              E-mail: <a href="mailto:help@freshfold.example">help@freshfold.example</a><br>
+              Phone: <a href="tel:+911234567890">+91 12345 67890</a>
+            </address>
+          </div>
+          <div class="col">
+            <table>
+              <caption>Helpdesk timings</caption>
+              <thead><tr><th scope="col">Day</th><th scope="col">Hours</th></tr></thead>
+              <tbody>
+                <tr><td>Monday to Friday</td><td>8 AM to 8 PM</td></tr>
+                <tr><td>Saturday</td><td>9 AM to 5 PM</td></tr>
+                <tr><td>Sunday</td><td>Closed</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Page footer -->
+    <footer>
+      <nav aria-label="Footer links">
+        <ul>
+          <li><a href="#track">Track order</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <p><small>&copy; 2026 FreshFold Laundry. All rights reserved.</small></p>
+    </footer>
+  </body>
+</html>
